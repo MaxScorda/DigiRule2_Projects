@@ -1,0 +1,69 @@
+// Some handy constants
+%define statusRegister      252
+%define buttonRegister      253
+%define addressLEDRegister  254
+%define dataLEDRegister     255
+
+// Setup (this code runs once)
+speed 129
+copylr 1 100
+copylr 127 101
+
+// Main loop (this code runs repeatedly until power is removed) 
+:Loop
+shiftrl 100
+copyra 100
+bcrss 7 100
+jump Next
+
+shiftrr 100
+copyra 100
+
+
+:Next
+shiftrl 101
+orra 101
+copyra dataLEDRegister
+bcrss 7 101
+jump Loop
+
+shiftrr 101
+orra 101
+copyra dataLEDRegister
+
+jump Loop
+
+
+metti 1 in locA
+metti 127 in locB
+rif1:
+shifl locA
+shiftr locB
+copy locA in Acc
+Acc or locB 
+copy Acc in led (255)
+loop rif1
+
+
+
+// Some handy constants
+%define statusRegister      252
+%define buttonRegister      253
+%define addressLEDRegister  254
+%define dataLEDRegister     255
+
+// My App
+SPEED 160
+COPYLR 1 100
+COPYLR 1 101
+COPYLR 0 102
+:Loop
+COPYRA 100
+ORRA 101
+COPYAR 255
+bcrss 0 102
+SHIFTRL 100
+SHIFTRL 101
+INCR 102
+jump loop // Loop forever
+
