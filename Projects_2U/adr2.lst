@@ -1,0 +1,112 @@
+Digirule 2U Cross-Assembler | Tue Jan 26 00:36:26 2021 | Page 1
+
+                    1.  ; Backcount
+                    2.
+0000                3.          org     0
+                    4.
+0000  03            5.  start   initsp
+                    6.
+0001  02 50         7.  restart speed   80
+0003  05 00 64      8.          copylr 0,100
+0006                9.  Loop
+0006  1E 64        10.          incr 100
+0008  2A 10        11.          call mirror
+000A  1A 64        12.          orra 100
+000C  07 FF        13.          copyar 255
+                   14.  ; Loop forever
+000E  28 06        15.          jump Loop
+                   16.
+0010               17.  mirror
+0010  05 00 65     18.          copylr 0,101
+0013  27 00 64     19.          btstss 0,100
+0016  28 1B        20.          jump uno
+0018  24 07 65     21.          bset 7,101
+001B               22.  uno
+                   23.
+001B  27 01 64     24.          btstss 1,100
+001E  28 23        25.          jump due
+0020  24 06 65     26.          bset 6,101
+0023               27.  due
+                   28.
+0023  27 02 64     29.          btstss 2,100
+0026  28 2B        30.          jump tre
+0028  24 05 65     31.          bset 5,101
+002B               32.  tre
+                   33.
+002B  27 03 64     34.          btstss 3,100
+002E  28 33        35.          jump quattro
+0030  24 04 65     36.          bset 4,101
+0033               37.  quattro
+                   38.
+0033  27 04 64     39.          btstss 4,100
+0036  28 3B        40.          jump cinque
+0038  24 04 65     41.          bset 4,101
+003B               42.  cinque
+                   43.
+003B  27 05 64     44.          btstss 5,100
+003E  28 43        45.          jump sei
+0040  24 02 65     46.          bset 2,101
+0043               47.  sei
+                   48.
+0043  27 06 64     49.          btstss 6,100
+0046  28 4B        50.          jump sette
+0048  24 01 65     51.          bset 1,101
+004B               52.  sette
+                   53.
+004B  27 07 64     54.          btstss 7,100
+004E  28 53        55.          jump otto
+0050  24 00 65     56.          bset 0,101
+0053               57.  otto
+                   58.
+Digirule 2U Cross-Assembler | Tue Jan 26 00:36:26 2021 | Page 2
+
+0053  09 65        59.          copyra 101
+0055  2C           60.          return
+0056      0000     61.          end     start
+
+Assembly complete
+0 errors
+0 warnings
+
+
+Line   Val   Symbol
+-----  ----  --------------------------------------------------
+    0  00FE  _ar                                               
+    0  00FD  _br                                               
+    0  0001  _c                                                
+    0  00FF  _dr                                               
+    0  0002  _sar                                              
+    0  00FC  _sr                                               
+    0  0000  _z                                                
+   42  003B  cinque                                            
+   27  0023  due                                               
+    9  0006  Loop                                              
+   17  0010  mirror                                            
+   57  0053  otto                                              
+   37  0033  quattro                                           
+    7  0001  restart                                           
+   47  0043  sei                                               
+   52  004B  sette                                             
+    5  0000  start                                             
+   32  002B  tre                                               
+   22  001B  uno                                               
+
+
+RAM Usage
+----------------------
+0000  XXXXXXXXXXXXXXXX
+0010  XXXXXXXXXXXXXXXX
+0020  XXXXXXXXXXXXXXXX
+0030  XXXXXXXXXXXXXXXX
+0040  XXXXXXXXXXXXXXXX
+0050  XXXXXX..........
+0060  ................
+0070  ................
+0080  ................
+0090  ................
+00A0  ................
+00B0  ................
+00C0  ................
+00D0  ................
+00E0  ................
+00F0  ............

@@ -1,0 +1,9 @@
+-compila
+adr2 [options] <sourcefile >hexfile
+adr2 < sample.asm > sample.hex
+
+- Setta in load
+Load RAM from the Comm Port
+Press and hold the Load button, then press the Next button.
+The Digirule 2U enters Comm Load mode.
+- Apri terminale in 9600,8n1 e upload il file
